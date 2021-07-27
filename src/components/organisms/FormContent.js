@@ -2,7 +2,7 @@ import React from 'react';
 import CustomText from "../atoms/CustomText";
 import CustomInput from "../atoms/CustomInput";
 
-function InformationContent (props) {
+function FormContent (props) {
     return (
         <div>
             <CustomText text="Crea tu Password Manager"/>
@@ -37,4 +37,4 @@ function InformationContent (props) {
     )
 }
 
-export default InformationContent;
+export default FormContent;
