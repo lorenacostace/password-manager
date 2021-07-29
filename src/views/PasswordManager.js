@@ -5,6 +5,7 @@ import InformationContent from "../components/organisms/InformationContent";
 import FeedbackContent from "../components/organisms/FeebackContentContainer";
 import Footer from "../components/molecules/Footer";
 import { submitForm } from "../services/api";
+import Header from "../components/molecules/Header";
 
 class PasswordManager extends React.Component {
 
@@ -164,6 +165,7 @@ class PasswordManager extends React.Component {
     render() {
         return (
             <div>
+                <Header steps={this.steps} currentStep={this.state.currentStep}/>
                 <StepsContainer steps={this.steps} currentStep={this.state.currentStep}/>
                 <Footer onClick={this.nextStep}
                         configButtonLeft={{
