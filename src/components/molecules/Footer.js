@@ -1,19 +1,20 @@
 import React from 'react';
 import CustomButton from "../atoms/CustomButton";
 
-function Footer ({ enableCancelButton, enableNextButton, nextStep, cancelStep, textLeftButton, textRightButton, showButton }) {
+function Footer ({ configButtonRight, configButtonLeft}) {
     return (
         <div>
             <CustomButton
-                show= { showButton }
-                disabled={ !enableCancelButton }
-                onClick={ cancelStep }
-                text = { textLeftButton }
+                showButton= { configButtonLeft.showButton }
+                enableButton={ configButtonLeft.enableButton }
+                onClick={ configButtonLeft.onClick }
+                text = { configButtonLeft.text }
             />
             <CustomButton
-                disabled={ !enableNextButton }
-                onClick={ nextStep }
-                text= { textRightButton }
+                showButton={ configButtonRight.showButton}
+                enableButton={ configButtonRight.enableButton }
+                onClick={ configButtonRight.onClick }
+                text= { configButtonRight.text }
             />
         </div>
     )

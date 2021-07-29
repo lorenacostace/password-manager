@@ -4,8 +4,7 @@ import InformationContainer from "../molecules/InformationContainer";
 import mechanicalHead from '../../images/group.svg'
 import safeBox from '../../images/group-3.svg'
 
-
-function InformationContent (props) {
+function InformationContent () {
     return (
         <div>
             <CustomText text="Crea tu Password Manager"/>
