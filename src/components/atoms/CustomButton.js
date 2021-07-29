@@ -1,8 +1,8 @@
 import React from 'react';
 
-function CustomButton ({ enableButton, nextStep, text }) {
+function CustomButton ({ enableButton, onClick, text }) {
     return (
-        <button disabled={ !enableButton } onClick={ nextStep } >{ text }</button>
+        <button disabled={ !enableButton } onClick={ onClick } >{ text }</button>
     )
 }
 
