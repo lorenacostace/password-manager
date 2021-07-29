@@ -3,7 +3,7 @@ import FormContent from "../components/organisms/FormContentContainer";
 import StepsContainer from "../components/organisms/StepsContainer";
 import InformationContent from "../components/organisms/InformationContent";
 import FeedbackContent from "../components/organisms/FeebackContentContainer";
-import Footer from "../components/molecules/Footer";
+import Footer from "../components/molecules/footer/Footer";
 import { submitForm } from "../services/api";
 import Header from "../components/molecules/Header";
 
@@ -13,17 +13,16 @@ class PasswordManager extends React.Component {
         super(props);
         this.state = {
             currentStep: 0,
+            nextButtonText: 'Siguiente'
         }
         this.buttonNext = {
             text: "Siguiente",
             enableButton: true,
-            showButton: true,
             onClick: () => this.nextStep()
         }
         this.buttonPrev = {
             text: "Cancelar",
             enableButton: true,
-            showButton: this.showButton(),
             onClick: () => this.cancelStep()
         }
         this.steps = [
@@ -55,7 +54,7 @@ class PasswordManager extends React.Component {
             {
                 component: <FeedbackContent handler={ this.nextStep } />,
                 buttonNext: {
-                    text: "Final",
+                    text: this.state.nextButtonText,
                 },
                 buttonPrev: {
                     text: "Cancelar",
@@ -72,9 +71,15 @@ class PasswordManager extends React.Component {
         const { status } = await submitForm(this.props.passwordOne, this.props.passwordTwo, this.props.hintPassword);
         if( status === 200 ){
             this.props.updateStatus('OK')
+            this.setState({
+                nextButtonText: 'Acceder'
+            })
         }
         else{
             this.props.updateStatus('KO')
+            this.setState({
+                nextButtonText: 'Volver a Password Manager'
+            })
         }
     }
 
@@ -115,10 +120,10 @@ class PasswordManager extends React.Component {
         this.props.setEnableButton(!isOk.length)
     }
 
-    showButton() {
-        let show = true;
-        if (this.currentStep === 2) {
-            show = false;
+    hiddenButton() {
+        let show = false;
+        if (this.state.currentStep === 2) {
+            show = true;
         }
         return show;
     }
@@ -170,11 +175,13 @@ class PasswordManager extends React.Component {
                 <Footer onClick={this.nextStep}
                         configButtonLeft={{
                             ...this.buttonPrev,
-                            ...this.steps[this.state.currentStep].buttonPrev
+                            ...this.steps[this.state.currentStep].buttonPrev,
+                            hiddenButton: this.hiddenButton()
                         }}
                         configButtonRight={{
                             ...this.buttonNext,
                             ...this.steps[this.state.currentStep].buttonNext,
+                            hiddenButton: false,
                             enableButton: this.props.enableButton
                         }}
                 />
