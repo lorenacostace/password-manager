@@ -1,4 +1,5 @@
 import React from "react";
+import {Input} from "./CustomInputStyle";
 
 class CustomInput extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class CustomInput extends React.Component {
 
     render() {
         return(
-            <input
+            <Input
             onChange={ this.passwordChange }
                 type={ this.props.type } maxLength={ this.props.maxLength } minLength={ this.props.minLength } placeholder= { this.props.placeholder }/>
         )
