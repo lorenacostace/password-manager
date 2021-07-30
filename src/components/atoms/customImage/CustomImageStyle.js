@@ -1,7 +1,7 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ImgTick = styled.img`
-  width: 100px;
+  width: 100%;
   ${props => props.header && css`
     width: 12px;
   `}
