@@ -1,8 +1,9 @@
-import styled , {css} from "styled-components";
+import styled , { css } from "styled-components";
+import CustomButton from "../../atoms/customButton/CustomButton";
 
-export const ButtonHidden = styled.div`
+export const ButtonHidden = styled(CustomButton)`
   ${configButtonLeft => configButtonLeft.hiddenButton && css`
-    display: none
+    display: none;
   `}
 `
 
