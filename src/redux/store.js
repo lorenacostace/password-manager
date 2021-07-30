@@ -8,7 +8,7 @@ const initialState = {
         passwordTwo: '',
         hintPassword: '',
         enableButton: true,
-        status:'KO'
+        status:'PENDING'
     },
 };
 
