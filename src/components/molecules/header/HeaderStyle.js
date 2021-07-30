@@ -7,12 +7,12 @@ export const StepPosition = styled.div`
   justify-content: center;
   align-content: stretch;
   align-items: center;
-  margin-top:20px;
-  margin-bottom:20px;
+  background-color: #c2cdd4;
+  padding: 10px 0;
 `
 
 export const Line = styled.div`
-  background-color: #e2e1e1;
+  background-color: #6b8c99;
   height: 2px;
   width: 40px;
   max-width: 100%;
@@ -24,5 +24,5 @@ export const Line = styled.div`
   ${props => props.featured && css`
     background-color: #FF0049;
   `}
-  
+
 `

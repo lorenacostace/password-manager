@@ -10,13 +10,13 @@ function Header(props) {
                 const isFirstStep = index === 0;
                 const isCurrentStep = index === props.currentStep
                 return (
-                    <StepPosition>
-                        <Line isHidden={isFirstStep} featured={isCurrentStep || isCheck}/>
-                        <div key={index}>
+                    <StepPosition key={ index }>
+                        <Line isHidden={ isFirstStep } featured={ isCurrentStep || isCheck }/>
+                        <div >
                             <MultiStepPosition
-                                featured={index === props.currentStep}
-                                text={isCheck ? '' : index + 1}
-                                stepCompleted={isCheck}
+                                featured={ index === props.currentStep }
+                                text={ isCheck ? '' : index + 1 }
+                                stepCompleted={ isCheck }
                             />
                         </div>
                     </StepPosition>
