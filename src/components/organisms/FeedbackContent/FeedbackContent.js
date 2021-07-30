@@ -11,9 +11,10 @@ import {
 } from "./FeedbackContentStyle";
 
 function FeedbackContent(props) {
-    const title = props.status === 'OK' ? "Tu Password Manager ya está creado" : "Ha habido un error";
-    const description = props.status === 'OK' ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh" : "No hemos podido modificar tu Contraseña Maestra. Inténtalo más tarde";
-    const customImage = props.status === 'OK' ? <CustomImage image={ checkOK }/> : <CustomImage image={ warningError }/>
+    const statusOK = props.status === 'OK';
+    const title = statusOK ? "Tu Password Manager ya está creado" : "Ha habido un error";
+    const description = statusOK ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh" : "No hemos podido modificar tu Contraseña Maestra. Inténtalo más tarde";
+    const customImage = statusOK ? <CustomImage image={ checkOK }/> : <CustomImage image={ warningError }/>
     return (
         <div>
             {

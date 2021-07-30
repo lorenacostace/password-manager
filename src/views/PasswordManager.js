@@ -6,7 +6,7 @@ import FeedbackContent from "../components/organisms/FeedbackContent/FeebackCont
 import Footer from "../components/molecules/footer/Footer";
 import { submitForm } from "../services/api";
 import Header from "../components/molecules/header/Header";
-import {Container} from "./PasswordManagerStyle";
+import { Container } from "./PasswordManagerStyle";
 
 class PasswordManager extends React.Component {
 
@@ -70,12 +70,11 @@ class PasswordManager extends React.Component {
 
     async formContentAction() {
         const { status } = await submitForm(this.props.passwordOne, this.props.passwordTwo, this.props.hintPassword);
+        this.props.updateFeedback(true);
         if( status === 200 ){
             this.props.updateStatus('OK');
             // this.props.updateConfigButtonRight({
                 // text
-                // hiddenButton
-                // feedbackButton
             // })
             this.setState({
                 nextButtonText: 'Acceder >'
@@ -126,14 +125,6 @@ class PasswordManager extends React.Component {
         this.props.setEnableButton(!isOk.length)
     }
 
-    // hiddenButton() {
-    //     let hidden = false;
-    //     if (this.state.currentStep === 2) {
-    //         hidden = true;
-    //     }
-    //     return hidden;
-    // }
-
     nextStep() {
         const {currentStep} = this.state;
         const nextStep = (currentStep + 1) % this.steps.length;
@@ -182,15 +173,14 @@ class PasswordManager extends React.Component {
                         configButtonLeft={{
                             ...this.buttonPrev,
                             ...this.steps[this.state.currentStep].buttonPrev,
-                            // hiddenButton: this.hiddenButton() REDUX
+                            feedback: this.props.feedback,
+                            status:this.props.status,
                         }}
                         configButtonRight={{
                             ...this.buttonNext,
                             ...this.steps[this.state.currentStep].buttonNext,
-                            // hiddenButton: false, REDUX
                             // text REDUX
-                            // this.props.configButtonNext
-                            // this.props.feedback
+                            feedback: this.props.feedback,
                             enableButton: this.props.enableButton
                         }}
                 />

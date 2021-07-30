@@ -8,7 +8,7 @@ export const Button = styled.button`
   border: #002B45;
   height: 50px;
   
-  ${props => props.feedback && css`
+  ${props => props.feedbackButton && css`
     color: #FF0049;
     background-color: white;
     border: white;

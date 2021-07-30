@@ -5,7 +5,8 @@ export const initialStatePasswordManager = {
     passwordTwo: '',
     hintPassword: '',
     enableButton: true,
-    status: 'KO'
+    status: 'KO',
+    feedback: false,
 };
 
 // Actions
@@ -27,7 +28,14 @@ export const actions = {
             type: "SET_STATUS",
             payload: value
         }
+    },
+    setFeedback: (value) => {
+        return{
+            type: "SET_FEEDBACK",
+            payload: value
+        }
     }
+
 };
 
 // Reducers
@@ -47,6 +55,11 @@ export const passwordReducer = (state = [], action) => {
             return {
                 ...state,
                 status: action.payload,
+            }
+        case "SET_FEEDBACK":
+            return {
+                ...state,
+                feedback: action.payload,
             }
         default:
             return state;
