@@ -14,9 +14,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-content: stretch;
   align-items: center;
-  margin-right:60px;
-  margin-left:60px;
-  margin-top:50px;
+  padding: 1rem 3rem;
 `
 
 export const Line = styled.div`
