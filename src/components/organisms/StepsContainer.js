@@ -6,7 +6,7 @@ function StepsContainer (props) {
     return (
         <div>
             { props.steps.map((step, index) => (
-                <div className={ props.currentStep !== index ? 'stepHidden': '' }>
+                <div key={index} className={ props.currentStep !== index ? 'stepHidden': '' }>
                     { step.component }
                 </div>
             ))}
