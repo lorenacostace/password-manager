@@ -6,7 +6,6 @@ import {
     ContainerPosition,
     ImagePositionSize,
     PaddingLeft,
-    SpinnerContainer,
     Title
 } from "./FeedbackContentStyle";
 
@@ -17,19 +16,6 @@ function FeedbackContent(props) {
     const customImage = statusOK ? <CustomImage image={ checkOK }/> : <CustomImage image={ warningError }/>
     return (
         <div>
-            {
-                props.status === 'PENDING' && (
-                    <SpinnerContainer className="sk-chase">
-                        <div className="sk-chase-dot"/>
-                        <div className="sk-chase-dot"/>
-                        <div className="sk-chase-dot"/>
-                        <div className="sk-chase-dot"/>
-                        <div className="sk-chase-dot"/>
-                        <div className="sk-chase-dot"/>
-                    </SpinnerContainer>
-                )
-            }
-
             {
                 props.status !== 'PENDING' && (
                     <ContainerPosition>

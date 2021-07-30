@@ -2,7 +2,6 @@ import React from 'react';
 import CustomButton from "../../atoms/customButton/CustomButton";
 import { Container, Line } from "./FooterStyle";
 
-
 function Footer ({ configButtonLeft, configButtonRight}) {
     return (
         <div>
@@ -10,23 +9,22 @@ function Footer ({ configButtonLeft, configButtonRight}) {
             <Container>
                 <div>
                     <CustomButton
-                        enableButton={ configButtonLeft.enableButton }
-                        onClick={configButtonLeft.onClick }
-                        text = { configButtonLeft.text }
-                        feedbackButton = { configButtonLeft.feedback }
-                        hiddenButton={ configButtonLeft.hiddenButton }
+                        enableButton={configButtonLeft.enableButton}
+                        onClick={configButtonLeft.onClick}
+                        text={configButtonLeft.text}
+                        hiddenButton={configButtonLeft.feedback}
                     />
                 </div>
                 <div>
                     <CustomButton
-                        enableButton={ configButtonRight.enableButton }
-                        onClick={ configButtonRight.onClick }
-                        text= { configButtonRight.text }
+                        enableButton={configButtonRight.enableButton}
+                        onClick={configButtonRight.onClick}
+                        text={configButtonRight.text}
+                        feedback={configButtonRight.feedback}
                     />
                 </div>
             </Container>
         </div>
-
     )
 }
 

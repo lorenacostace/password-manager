@@ -4,9 +4,9 @@ import StepsContainer from "../components/organisms/stepsContainer/StepsContaine
 import InformationContent from "../components/organisms/informationContent/InformationContent";
 import FeedbackContent from "../components/organisms/FeedbackContent/FeebackContentContainer";
 import Footer from "../components/molecules/footer/Footer";
-import { submitForm } from "../services/api";
+import {submitForm} from "../services/api";
 import Header from "../components/molecules/header/Header";
-import { Container } from "./PasswordManagerStyle";
+import {Container, SpinnerContainer, SpinnerCover} from "./PasswordManagerStyle";
 
 class PasswordManager extends React.Component {
 
@@ -28,7 +28,7 @@ class PasswordManager extends React.Component {
         }
         this.steps = [
             {
-                component: <InformationContent handler={ this.nextStep }/>,
+                component: <InformationContent handler={this.nextStep}/>,
                 buttonNext: {
                     text: "Siguiente  >",
                 },
@@ -53,7 +53,7 @@ class PasswordManager extends React.Component {
                 finalAction: () => this.formContentAction(),
             },
             {
-                component: <FeedbackContent handler={ this.nextStep } />,
+                component: <FeedbackContent handler={this.nextStep}/>,
                 buttonNext: {
                     hiddenButton: true
                 },
@@ -64,27 +64,21 @@ class PasswordManager extends React.Component {
                 initialAction: () => {
                     this.props.setEnableButton(true)
                 },
+                finalAction: () => this.formContentAction(),
             }
         ]
     }
 
     async formContentAction() {
-        const { status } = await submitForm(this.props.passwordOne, this.props.passwordTwo, this.props.hintPassword);
+        this.props.updateStatus('PENDING')
+        const {status} = await submitForm(this.props.passwordOne, this.props.passwordTwo, this.props.hintPassword);
         this.props.updateFeedback(true);
-        if( status === 200 ){
+        if (status === 200) {
             this.props.updateStatus('OK');
-            // this.props.updateConfigButtonRight({
-                // text
-            // })
-            this.setState({
-                nextButtonText: 'Acceder >'
-            })
-        }
-        else{
-            this.props.updateStatus('KO')
-            this.setState({
-                nextButtonText: 'Volver a Password Manager >'
-            })
+            this.props.updateTextButton('Acceder  >')
+        } else {
+            this.props.updateStatus('KO');
+            this.props.updateTextButton('Volver a Password Manager >')
         }
     }
 
@@ -174,16 +168,30 @@ class PasswordManager extends React.Component {
                             ...this.buttonPrev,
                             ...this.steps[this.state.currentStep].buttonPrev,
                             feedback: this.props.feedback,
-                            status:this.props.status,
+                            status: this.props.status,
                         }}
                         configButtonRight={{
                             ...this.buttonNext,
                             ...this.steps[this.state.currentStep].buttonNext,
-                            // text REDUX
                             feedback: this.props.feedback,
-                            enableButton: this.props.enableButton
+                            enableButton: this.props.enableButton,
+                            text: this.props.text
                         }}
                 />
+                {
+                    this.props.status === 'PENDING' && (
+                        <SpinnerCover>
+                            <SpinnerContainer className="sk-chase">
+                                <div className="sk-chase-dot"/>
+                                <div className="sk-chase-dot"/>
+                                <div className="sk-chase-dot"/>
+                                <div className="sk-chase-dot"/>
+                                <div className="sk-chase-dot"/>
+                                <div className="sk-chase-dot"/>
+                            </SpinnerContainer>
+                        </SpinnerCover>
+                    )
+                }
             </Container>
         )
     }

@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
         hintPassword: state.passwords.hintPassword,
         enableButton: state.passwords.enableButton,
         status: state.passwords.status,
-        feedback: state.passwords.feedback
+        feedback: state.passwords.feedback,
+        text: state.passwords.text,
     }
 }
 
@@ -17,7 +18,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setEnableButton: (value) => dispatch(actionsPassword.setEnableButton(value)),
         updateStatus: (value) => dispatch(actionsPassword.setStatus(value)),
-        updateFeedback: (value) => dispatch(actionsPassword.setFeedback(value))
+        updateFeedback: (value) => dispatch(actionsPassword.setFeedback(value)),
+        updateTextButton: (value) => dispatch(actionsPassword.setButtonText(value))
     }
 }
 

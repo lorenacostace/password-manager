@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const SpinnerContainer = styled.div`
-  margin: 3rem auto;
-  width: 50px;
-`
-
 export const ContainerPosition = styled.div`
   display: flex;
   flex-direction: row;
