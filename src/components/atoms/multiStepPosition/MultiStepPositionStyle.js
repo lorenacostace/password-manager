@@ -8,7 +8,7 @@ export const Background = styled.div`
   align-content: stretch;
   align-items: center;
   border-radius: 50%;
-  background-color: #808b90;
+  background-color: #6b8c99;
   min-width: 1.5em;
   min-height: 1.5em;
   text-align: center;
