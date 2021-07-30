@@ -1,9 +1,10 @@
 import React from 'react';
+import { ImgTick } from "./CustomImageStyle";
 
 function CustomImage (props) {
     return (
         <div>
-            <img src={ props.image } alt="image" />
+            <ImgTick src={ props.image } header={ props.header } alt="image" />
         </div>
     )
 }
