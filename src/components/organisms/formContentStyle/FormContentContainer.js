@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import FormContent from "./FormContent";
-import { actions as actionsPassword } from '../../redux/passwords'
+import { actions as actionsPassword } from '../../../redux/passwords'
 
 const mapStateToProps = (state) => {
     return {

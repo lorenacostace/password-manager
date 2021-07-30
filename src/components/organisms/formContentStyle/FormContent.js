@@ -1,6 +1,12 @@
 import React from 'react';
-import CustomText from "../atoms/CustomText";
-import CustomInput from "../atoms/CustomInput";
+import CustomInput from "../../atoms/customInput/CustomInput";
+import {
+    InputGroup,
+    Padding,
+    Subtitle,
+    Title,
+    Line
+} from "./FormContentStyle";
 
 class FormContent extends React.Component {
     constructor(props) {
@@ -15,18 +21,21 @@ class FormContent extends React.Component {
     render() {
         return (
             <div>
-                <CustomText text="Crea tu Password Manager"/>
-                <CustomText text="En primer lugar, debes crear una contraseña diferente para sus pertenencias electrónicas. No podrás recuperar tu contraseña, así que recuérdela bien"/>
-                <div>
-                    <div>
-                        <CustomText text="Crea tu Contraseña Maestra"/>
+                <Title>Crea tu Password Manager</Title>
+                <Line/>
+                <div>En primer lugar, debes crear una contraseña diferente para sus pertenencias electrónicas. No podrás recuperar tu contraseña, así que recuérdela bien</div>
+                <InputGroup>
+                    <Padding>
+                        <Subtitle>Crea tu Contraseña Maestra</Subtitle>
                         <CustomInput
                             type="password"
                             placeholder="Introduce la contraseña"
                             handler={ this.modifiedInput }
                             id="passwordOne"
                         />
-                        <CustomText text="Repite tu Contraseña Maestra"/>
+                    </Padding>
+                    <div>
+                        <Subtitle>Repite tu Contraseña Maestra</Subtitle>
                         <CustomInput
                             type="password"
                             placeholder="Repite la contraseña"
@@ -34,9 +43,9 @@ class FormContent extends React.Component {
                             id="passwordTwo"
                         />
                     </div>
-                </div>
-                <CustomText text="También puedes crear una pista que te ayude a recordar tu contraseña maestra"/>
-                <CustomText text="Crea tu pista para recordar tu contraseña (opcional)"/>
+                </InputGroup>
+                <div>También puedes crear una pista que te ayude a recordar tu contraseña maestra</div>
+                <Subtitle>Crea tu pista para recordar tu contraseña (opcional)</Subtitle>
                 <CustomInput
                     type=""
                     placeholder="Introduce tu pista"
