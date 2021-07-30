@@ -1,11 +1,12 @@
 import React from "react";
-import FormContent from "../components/organisms/FormContentContainer";
-import StepsContainer from "../components/organisms/StepsContainer";
+import FormContent from "../components/organisms/formContentStyle/FormContentContainer";
+import StepsContainer from "../components/organisms/stepsContainer/StepsContainer";
 import InformationContent from "../components/organisms/informationContent/InformationContent";
 import FeedbackContent from "../components/organisms/FeedbackContent/FeebackContentContainer";
 import Footer from "../components/molecules/footer/Footer";
 import { submitForm } from "../services/api";
 import Header from "../components/molecules/header/Header";
+import {Container} from "./PasswordManagerStyle";
 
 class PasswordManager extends React.Component {
 
@@ -174,7 +175,7 @@ class PasswordManager extends React.Component {
 
     render() {
         return (
-            <div>
+            <Container>
                 <Header steps={this.steps} currentStep={this.state.currentStep}/>
                 <StepsContainer steps={this.steps} currentStep={this.state.currentStep}/>
                 <Footer onClick={this.nextStep}
@@ -193,7 +194,7 @@ class PasswordManager extends React.Component {
                             enableButton: this.props.enableButton
                         }}
                 />
-            </div>
+            </Container>
         )
     }
 }
