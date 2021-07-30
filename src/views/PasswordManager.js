@@ -1,7 +1,7 @@
 import React from "react";
 import FormContent from "../components/organisms/FormContentContainer";
 import StepsContainer from "../components/organisms/StepsContainer";
-import InformationContent from "../components/organisms/InformationContent";
+import InformationContent from "../components/organisms/informationContent/InformationContent";
 import FeedbackContent from "../components/organisms/FeedbackContent/FeebackContentContainer";
 import Footer from "../components/molecules/footer/Footer";
 import { submitForm } from "../services/api";
