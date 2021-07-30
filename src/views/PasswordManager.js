@@ -64,7 +64,7 @@ class PasswordManager extends React.Component {
                 initialAction: () => {
                     this.props.setEnableButton(true)
                 },
-                finalAction: () => this.formContentAction(),
+                finalAction: () => this.reset(),
             }
         ]
     }
@@ -80,6 +80,10 @@ class PasswordManager extends React.Component {
             this.props.updateStatus('KO');
             this.props.updateTextButton('Volver a Password Manager >')
         }
+    }
+
+    reset() {
+        this.props.passwordManagerReset();
     }
 
     formContentValidator() {

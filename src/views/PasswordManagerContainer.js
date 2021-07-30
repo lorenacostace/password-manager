@@ -19,7 +19,8 @@ const mapDispatchToProps = (dispatch) => {
         setEnableButton: (value) => dispatch(actionsPassword.setEnableButton(value)),
         updateStatus: (value) => dispatch(actionsPassword.setStatus(value)),
         updateFeedback: (value) => dispatch(actionsPassword.setFeedback(value)),
-        updateTextButton: (value) => dispatch(actionsPassword.setButtonText(value))
+        updateTextButton: (value) => dispatch(actionsPassword.setButtonText(value)),
+        passwordManagerReset: () => dispatch(actionsPassword.reset())
     }
 }
 

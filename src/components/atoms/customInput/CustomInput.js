@@ -9,17 +9,22 @@ class CustomInput extends React.Component {
 
     passwordChange(event) {
         let value = "";
-        if(event.target.value.length >= 1){
+        if (event.target.value.length >= 1) {
             value = event.target.value;
         }
         this.props.handler(this.props.id, value)
     }
 
     render() {
-        return(
+        return (
             <Input
-            onChange={ this.passwordChange }
-                type={ this.props.type } maxLength={ this.props.maxLength } minLength={ this.props.minLength } placeholder= { this.props.placeholder }/>
+                onChange={this.passwordChange}
+                type={this.props.type}
+                maxLength={this.props.maxLength}
+                minLength={this.props.minLength}
+                placeholder={this.props.placeholder}
+                value={this.props.value}
+            />
         )
     }
 }

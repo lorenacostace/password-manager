@@ -5,6 +5,9 @@ import { actions as actionsPassword } from '../../../redux/passwords'
 const mapStateToProps = (state) => {
     return {
         passwords: state.passwords,
+        passwordOne: state.passwords.passwordOne,
+        passwordTwo: state.passwords.passwordTwo,
+        hintPassword: state.passwords.hintPassword,
     }
 }
 

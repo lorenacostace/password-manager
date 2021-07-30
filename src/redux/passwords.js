@@ -1,4 +1,3 @@
-
 // Initial state
 export const initialStatePasswordManager = {
     passwordOne: '',
@@ -31,15 +30,20 @@ export const actions = {
         }
     },
     setFeedback: (value) => {
-        return{
+        return {
             type: "SET_FEEDBACK",
             payload: value
         }
     },
     setButtonText: (value) => {
-        return{
+        return {
             type: "SET_BUTTON_TEXT",
             payload: value
+        }
+    },
+    reset: () => {
+        return {
+            type: "RESET",
         }
     }
 };
@@ -71,6 +75,10 @@ export const passwordReducer = (state = [], action) => {
             return {
                 ...state,
                 text: action.payload,
+            }
+        case "RESET":
+            return {
+                ...initialStatePasswordManager
             }
         default:
             return state;

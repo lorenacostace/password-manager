@@ -31,6 +31,7 @@ class FormContent extends React.Component {
                             type="password"
                             placeholder="Introduce la contraseña"
                             handler={ this.modifiedInput }
+                            value={ this.props.passwordOne }
                             id="passwordOne"
                         />
                     </Padding>
@@ -40,6 +41,7 @@ class FormContent extends React.Component {
                             type="password"
                             placeholder="Repite la contraseña"
                             handler={ this.modifiedInput }
+                            value={ this.props.passwordTwo }
                             id="passwordTwo"
                         />
                     </div>
@@ -50,6 +52,7 @@ class FormContent extends React.Component {
                     type=""
                     placeholder="Introduce tu pista"
                     handler={ this.modifiedInput }
+                    value={ this.props.hintPassword }
                     id="hintPassword"
                 />
             </div>
