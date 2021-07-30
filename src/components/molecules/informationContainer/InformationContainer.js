@@ -1,6 +1,5 @@
 import React from "react";
 import CustomImage from "../../atoms/customImage/CustomImage";
-import CustomText from "../../atoms/CustomText";
 import { Container } from "./InformationContainerStyle";
 
 function InformationContainer (props) {
@@ -10,7 +9,7 @@ function InformationContainer (props) {
                 <CustomImage image={ props.image } />
             </div>
             <div>
-                <CustomText text={ props.text } />
+                { props.text }
             </div>
         </Container>
     )
