@@ -3,9 +3,10 @@ import styled , {css} from "styled-components";
 export const Button = styled.button`
   background-color: #002B45;
   color: white;
-  padding: 10px 20px 10px 15px;
+  padding: 10px 35px;
   border-radius: 0.2em;
   border: #002B45;
+  height: 50px;
   
   ${props => props.feedback && css`
     color: #FF0049;
