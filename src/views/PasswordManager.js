@@ -2,10 +2,10 @@ import React from "react";
 import FormContent from "../components/organisms/FormContentContainer";
 import StepsContainer from "../components/organisms/StepsContainer";
 import InformationContent from "../components/organisms/InformationContent";
-import FeedbackContent from "../components/organisms/FeebackContentContainer";
+import FeedbackContent from "../components/organisms/FeedbackContent/FeebackContentContainer";
 import Footer from "../components/molecules/footer/Footer";
 import { submitForm } from "../services/api";
-import Header from "../components/molecules/Header";
+import Header from "../components/molecules/header/Header";
 
 class PasswordManager extends React.Component {
 
@@ -13,10 +13,10 @@ class PasswordManager extends React.Component {
         super(props);
         this.state = {
             currentStep: 0,
-            nextButtonText: 'Siguiente'
+            nextButtonText: 'Siguiente  >'
         }
         this.buttonNext = {
-            text: "Siguiente",
+            text: "Siguiente  >",
             enableButton: true,
             onClick: () => this.nextStep()
         }
@@ -29,7 +29,7 @@ class PasswordManager extends React.Component {
             {
                 component: <InformationContent handler={ this.nextStep }/>,
                 buttonNext: {
-                    text: "Siguiente",
+                    text: "Siguiente  >",
                 },
                 buttonPrev: {
                     text: "Cancelar",
@@ -40,25 +40,25 @@ class PasswordManager extends React.Component {
             },
             {
                 component: <FormContent/>,
+                buttonNext: {
+                    text: "Siguiente  >",
+                },
+                buttonPrev: {
+                    text: "Cancelar",
+                },
                 initialAction: () => {
                     this.props.setEnableButton(false);
                 },
                 finalAction: () => this.formContentAction(),
-                buttonNext: {
-                    text: "Siguiente",
-                },
-                buttonPrev: {
-                    text: "Cancelar",
-                }
             },
             {
                 component: <FeedbackContent handler={ this.nextStep } />,
                 buttonNext: {
-                    text: this.state.nextButtonText,
+                    hiddenButton: true
                 },
                 buttonPrev: {
                     text: "Cancelar",
-                    className: ""
+                    hiddenButton: true
                 },
                 initialAction: () => {
                     this.props.setEnableButton(true)
@@ -70,15 +70,20 @@ class PasswordManager extends React.Component {
     async formContentAction() {
         const { status } = await submitForm(this.props.passwordOne, this.props.passwordTwo, this.props.hintPassword);
         if( status === 200 ){
-            this.props.updateStatus('OK')
+            this.props.updateStatus('OK');
+            // this.props.updateConfigButtonRight({
+                // text
+                // hiddenButton
+                // feedbackButton
+            // })
             this.setState({
-                nextButtonText: 'Acceder'
+                nextButtonText: 'Acceder >'
             })
         }
         else{
             this.props.updateStatus('KO')
             this.setState({
-                nextButtonText: 'Volver a Password Manager'
+                nextButtonText: 'Volver a Password Manager >'
             })
         }
     }
@@ -120,13 +125,13 @@ class PasswordManager extends React.Component {
         this.props.setEnableButton(!isOk.length)
     }
 
-    hiddenButton() {
-        let show = false;
-        if (this.state.currentStep === 2) {
-            show = true;
-        }
-        return show;
-    }
+    // hiddenButton() {
+    //     let hidden = false;
+    //     if (this.state.currentStep === 2) {
+    //         hidden = true;
+    //     }
+    //     return hidden;
+    // }
 
     nextStep() {
         const {currentStep} = this.state;
@@ -149,7 +154,7 @@ class PasswordManager extends React.Component {
     }
 
     cancelStep() {
-        //Reseteamos los inputs
+        //Reseteamos los inputs en el finalAction del step feedback
 
         this.setState({
             currentStep: 0,
@@ -176,12 +181,15 @@ class PasswordManager extends React.Component {
                         configButtonLeft={{
                             ...this.buttonPrev,
                             ...this.steps[this.state.currentStep].buttonPrev,
-                            hiddenButton: this.hiddenButton()
+                            // hiddenButton: this.hiddenButton() REDUX
                         }}
                         configButtonRight={{
                             ...this.buttonNext,
                             ...this.steps[this.state.currentStep].buttonNext,
-                            hiddenButton: false,
+                            // hiddenButton: false, REDUX
+                            // text REDUX
+                            // this.props.configButtonNext
+                            // this.props.feedback
                             enableButton: this.props.enableButton
                         }}
                 />
