@@ -144,8 +144,6 @@ class PasswordManager extends React.Component {
     }
 
     cancelStep() {
-        //Reseteamos los inputs en el finalAction del step feedback
-
         this.setState({
             currentStep: 0,
         })
